@@ -2,7 +2,7 @@
   vars:
     - ansible_python_interpreter: "/usr/bin/python3"
   vars_files:
-    - /home/ubuntu/ansible-working/vault/github_secrets.yml
+    - /home/ubuntu/ansible-working/vault/testing.yml
   tasks:
     - name: Create a GitHub Repo
       github_repo:
@@ -16,6 +16,8 @@
         has_downloads: no
         state: present
       register: result
+      tags: 
+       - add
     
     - name: Delete GitHub Repo
       github_repo:
@@ -23,3 +25,5 @@
         username: "c-poteat"
         name: "Hello-World"
         state: absent
+      tags:
+        - delete
