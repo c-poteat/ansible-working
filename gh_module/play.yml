@@ -1,11 +1,12 @@
 - hosts: localhost
   vars:
-    - github_token: "{{ token }}"
     - ansible_python_interpreter: "/usr/bin/python3"
+  vars_files:
+    - /home/ubuntu/ansible-working/vault/github_secrets.yml
   tasks:
     - name: Create a GitHub Repo
       github_repo:
-        github_auth_key:  "{{github_token}}" 
+        github_auth_key:  "{{ token }}" 
         username: "c-poteat"
         name: "Hello-World"
         description: "First repo created with custom Ansible module"
@@ -18,7 +19,7 @@
     
     - name: Delete GitHub Repo
       github_repo:
-        github_auth_key:  "{{github_token}}" 
-        username: "YOUR GITHUB USERNAME HERE"
+        github_auth_key:  "{{ token }}" 
+        username: "c-poteat"
         name: "Hello-World"
         state: absent
