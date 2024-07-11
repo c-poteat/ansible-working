@@ -15,3 +15,10 @@
         has_downloads: no
         state: present
       register: result
+    
+    - name: Delete GitHub Repo
+      github_repo:
+        github_auth_key:  "{{github_token}}" 
+        username: "YOUR GITHUB USERNAME HERE"
+        name: "Hello-World"
+        state: absent
