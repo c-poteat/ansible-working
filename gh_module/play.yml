@@ -3,6 +3,7 @@
     - ansible_python_interpreter: "/usr/bin/python3"
   vars_files:
     - /home/ubuntu/ansible-working/vault/testing.yml
+
   tasks:
     - name: Create a GitHub Repo
       github_repo:
